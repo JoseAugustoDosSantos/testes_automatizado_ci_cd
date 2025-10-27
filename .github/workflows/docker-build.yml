@@ -5,21 +5,12 @@ on:
   push:
     branches:
       - main
-env:
-    ENV: 'env1'
 jobs:
-  run-automacao:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v5
-    - uses: actions/setup-node@v6
-      with:
-        node-version: 22
-    - name: Instalando dependências
-      run: npm install
-    - name: Rodando os testes automatizados
-      run: npx codeceptjs run --verbose
+  chama-workflow-automacao:
+    uses: JoseAugustoDosSantos/testes_automatizado_ci_cd/.github/workflows/run-automacao.yml@main
+
   docker-build:
+    needs: ['chama-workflow-automacao']
     runs-on: ubuntu-latest
     steps:
       -

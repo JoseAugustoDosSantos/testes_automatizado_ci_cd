@@ -1,0 +1,22 @@
+name: Run automação + Build e Push da imagem 
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+env:
+    ENV: 'env1'
+jobs:
+  run-automacao:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - uses: actions/setup-node@v6
+      with:
+        node-version: 22
+    - name: Instalando dependências
+      run: npm install
+    - name: Rodando os testes automatizados
+      run: npx codeceptjs run --verbose
