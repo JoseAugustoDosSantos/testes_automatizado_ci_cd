@@ -4,4 +4,4 @@
 - Status code
 - Json schema
 - Mensagem de sucesso ou erro
-- Validação da existência da chave authorization no cenário positivo.
+- Validação da existência da chave authorization no cenário positivo..
